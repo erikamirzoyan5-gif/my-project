@@ -1,0 +1,560 @@
+/* Progress Steps */
+․body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fffdfd;
+  
+}
+.onboarding-header {
+  background: linear-gradient(135deg, #0D3938 0%, #61A162 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  z-index: 1;
+}
+
+.step.active::after {
+  background: #ffd700;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.step.active .step-number {
+  background: #F2A800;
+  color: #333;
+}
+
+.step span {
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Form Sections */
+.form-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin-bottom: 1.5rem;
+  border: 1px solid #e8e8e8;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-header h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.help-tooltip {
+  position: relative;
+  cursor: help;
+  color: #6c757d;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2c3e50;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  width: 200px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.help-tooltip:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+.section-description {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Organization Type Cards - FIXED */
+.options-grid.equal-height {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.option-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 60px;
+  position: relative;
+}
+
+.option-card:hover {
+  border-color: #00553E;
+  background: #f0f9f0;
+}
+
+.option-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.option-card input[type="radio"]:checked + .option-text {
+  color: #00553E;
+  font-weight: 600;
+}
+
+.option-card input[type="radio"]:checked {
+  background-color: #00553E;
+  border-color: #00553E;
+}
+
+.option-text {
+  margin-left: 0;
+  font-weight: 500;
+  color: #495057;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+/* Custom Radio Button Styling */
+.option-card::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.option-card input[type="radio"]:checked ~ .option-text {
+  color: #00553E;
+  font-weight: 600;
+}
+
+.option-card input[type="radio"]:checked::before {
+  background: #00553E;
+  border-color: #00553E;
+}
+
+/* Age Groups */
+.age-groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.age-group-card {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.age-group-card:hover {
+  border-color: #00553E;
+  transform: translateY(-2px);
+}
+
+.age-group-card--active {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  border-color: #00553E;
+  color: white;
+}
+
+.age-group-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.age-range {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.age-years {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Dropdown Styles - FIXED (always show on hover) */
+.dropdown-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  margin-top: 0.5rem;
+  display: block !important; /* Always show when parent has hover */
+}
+
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-option {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dropdown-option:hover {
+  background: #f8f9fa;
+}
+
+.dropdown-option input[type="checkbox"] {
+  margin: 0;
+}
+
+/* Selected Items */
+.selected-items {
+  margin: 1.5rem 0;
+}
+
+.selected-items h4 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.selected-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.selected-chip {
+  background: linear-gradient(135deg, #00553E , #0D3938);
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.chip-remove {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom Input Groups */
+.custom-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.custom-input-group .input-field {
+  flex: 1;
+}
+
+.add-custom-btn {
+  background: #00553E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-custom-btn:hover {
+  background: #0D3938;
+}
+
+.custom-legal-input {
+  margin-top: 1rem;
+}
+
+/* Form Elements - FIXED */
+.input-field, .select-field, .textarea-field {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  box-sizing: border-box;
+}
+
+.input-field:focus, .select-field:focus, .textarea-field:focus {
+  outline: none;
+  border-color: #00553E;
+  box-shadow: 0 0 0 3px rgba(0, 85, 62, 0.1);
+}
+
+.textarea-field {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  display: block;
+  width: 100%;
+}
+
+/* Organization Details Section - FIXED */
+.organization-details .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.organization-details .textarea-field {
+  width: 100%;
+  display: block;
+}
+
+/* Legal Form Dropdown - FIXED */
+.legal-form-container {
+  position: relative;
+}
+
+.legal-dropdown {
+  position: relative;
+}
+
+.legal-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.legal-form-container:hover .legal-dropdown-menu {
+  display: block;
+}
+
+/* Buttons */
+.primary-btn {
+  background: linear-gradient(135deg, #0D3938 0%, #61A162 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 57, 56, 0.3);
+}
+
+.ghost-btn {
+  margin-top: 20px;
+  background: transparent;
+  color: #00553E;
+  border: 2px solid #00553E;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ghost-btn:hover {
+  background: #00553E;
+  color: white;
+}
+
+/* Grid Layouts */
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-with-action {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+  background: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+  
+  .age-groups-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .options-grid.equal-height {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-steps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .step:not(:last-child)::after {
+    display: none;
+  }
+}
+
+/* Selected Audiences */
+.selected-audiences {
+  background: #f6f6f6;
+  border: 1px solid #00553E;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #2c3e50;
+}
+
+/* Focus Areas - Always show dropdown on hover */
+.focus-areas-container:hover .dropdown-menu {
+  display: block !important;
+}
+
+/* Legal Form - Always show dropdown on hover */
+.legal-form-container:hover .legal-dropdown-menu {
+  display: block !important;
+}
+.ghost-btn.with-icon {
+  margin-right: 600px;
+  background: linear-gradient(135deg, #0D3938 0%, #61A162 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ghost-btn.with-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 57, 56, 0.3);
+}
